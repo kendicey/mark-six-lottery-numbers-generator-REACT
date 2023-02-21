@@ -27,6 +27,7 @@
 	border-radius: 20px;
   animation: lighting 1s infinite;
 }
+
 /* border animation */
 @keyframes lighting {
   from {border: 1px solid #ffb9e9;}
@@ -40,8 +41,8 @@
 	width: 200px;
 	height: 200px;
 	display: inline-block;
-	margin-top: 60px;
-	margin-bottom: 60px;
+	margin-top: 70px;
+	margin-bottom: 70px;
 	padding: 10px;
 	line-height: 200px;
 
@@ -58,6 +59,7 @@
   background-image: linear-gradient(white, #baaca0);
   box-shadow: -2.5px 2px 15px #fbff00, 2.5px -2px 15px rgb(0, 209, 21);
 }
+
 /* large number display box animation */
 @keyframes mymove {
   50% {transform: rotate(360deg);}
@@ -88,14 +90,15 @@
 /* formatting and styling for "generate" button */
 #button {
   /* size and position */	
-	height: 30px;
+	height: 45px;
+  width: 90px;
+  line-height: 45px;
 	margin-bottom: 40px;
-  margin-right: 10px;
-	padding: 1em 1.5em 2em 1.5em;
+  margin-right: 5px;
 
   /* fonts */
-	font-family: "Rajdhani", sans-serif;
 	font-weight: bold;
+  text-transform: uppercase;
 
   /* border */
   border-radius: 25px;
@@ -113,11 +116,15 @@
 /* formatting and styling for "start again" button */
 #reset {
   /* size and position */	
-	height: 30px;
-	padding: 1em 1em 2em 1em;
+	height: 45px;
+  width: 100px;
+  line-height: 45px;
+  margin-bottom: 40px;
+  margin-left: 5px;;
 
   /* fonts */
 	font-weight: bold;
+  text-transform: uppercase;
 
   /* border */
   border-radius: 25px;
