@@ -14,13 +14,13 @@ HTML, CSS, React.js
 2. Clone the repository:
 
 ```
-git clone 
+git clone https://github.com/kendicey/mark-six-lottery-numbers-generator-REACT.git
 ```
 
 3. Install dependencies:
 
 ```
-npm install express
+npm i
 ```
 
 4. Ready to run:
