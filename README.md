@@ -5,7 +5,7 @@ This programme helps players to generate 6 unique numbers for the game.
 
 # Tech Stack
 
-HTML, CSS, React.js
+HTML, CSS, JavaScript, React.js
 
 # Getting Started
 
