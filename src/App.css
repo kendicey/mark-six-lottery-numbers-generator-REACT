@@ -40,6 +40,7 @@
   /* size and position */
 	width: 200px;
 	height: 200px;
+  overflow: hidden;
 	display: inline-block;
 	margin-top: 70px;
 	margin-bottom: 70px;
