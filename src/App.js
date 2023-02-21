@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import './App.css';
 
+const LAST_NUM_INDEX = 5;
+const POSSIBLE_NUM_TOTAL = 49;
+
 function App() {
   // set states and initialize them
   const [numbers, setNumbers] = useState([]);
@@ -9,50 +12,81 @@ function App() {
   const [isResetShown, setIsResetShown] = useState(false);
   const [animation, setAnimation] = useState(false);
 
-  // function to generate a unique number from 1 - 49
-  const generateNumber = () => {
-    if (numbers.length < 5){
-      let num = Math.floor(Math.random() * 49) + 1;
-      // make sure the new number generated does not exist in the existing array
-      while(numbers.indexOf(num) !== -1){
-        num = Math.floor(Math.random() * 49) + 1;
-      }
+  /**
+   * Generates a random number from 1 - 49
+   * @function
+   * @returns {number} A random integer between 1 and 49 (inclusive)
+   */
+  const generateNumber = () => Math.floor(Math.random() * POSSIBLE_NUM_TOTAL) + 1;
+
+  /**
+   * Generates a new number if there is a repeated number in the array
+   * @function
+   * @param {number} num - The number to check for repeats in the array
+   * @returns {void}
+   */
+  const checkNumber = (num) => {
+    while(numbers.indexOf(num) !== -1){
+      num = generateNumber();
+    }
+  }
+
+  /**
+   * Generates a unique number from 1 - 49 and adds it to the numbers array
+   * @function
+   *  1. generate a number from 1 - 49
+   *  2. check if the number repeats
+   *  3. while repeats, generate a new number
+   *  4. if the number does not repeat, push it to the numbers array
+   *  5. disable the "generate" button and show "start again" button when there are 6 numbers generated
+   * @returns {void}
+*/
+  const generateUniqueNumber = () => {
+    if (numbers.length < LAST_NUM_INDEX){
+      let num = generateNumber();
+      checkNumber(num);
       numbers.push(num);
       setNumbers(numbers);
-    } else if (numbers.length == 5) {
-        let num = Math.floor(Math.random() * 49) + 1;
-        while(numbers.indexOf(num) !== -1){
-          num = Math.floor(Math.random() * 49) + 1;
-        }
+    } else if (numbers.length === LAST_NUM_INDEX) {
+        let num = generateNumber();
+        checkNumber(num);
         numbers.push(num);
         setNumbers(numbers);
-        // disable the "generate" button and show "start again" button when there are 6 numbers generated
         setIsDisabled(true);
         setIsResetShown(true);
     } 
   }
 
-  // when the "generate" button is clicked
-  const handleClick = () => {
-    // clear display box
+  /**
+   * Handles the click event for the "generate" button
+   * @function
+   *  1. clear display box
+   *  2. show rotate display box animation for 2 second
+   *  3. generate a unique number from 1-49 after rotation animation
+   *  4. disable rotation animation so it can be shown on every button's click
+   *  5. display the number generated in display box
+   * @returns {void}
+   */
+  async function handleClick() {
     setDisplay('');
-    // show rotate display box animation for 2 second
     setAnimation(true);
-    // generate a unique number from 1-49 after rotation animation
-    setTimeout(generateNumber, 2300);
-    // then disable rotation animation so it can be shown on every button's click
-    setTimeout(() => setAnimation(false), 2300);
-    // finally, display the number generated in display box
-    setTimeout(() => setDisplay(numbers[numbers.length-1]), 2300);
+    await new Promise(resolve => setTimeout(resolve, 2300));
+    generateUniqueNumber();
+    setAnimation(false);
+    setDisplay(numbers[numbers.length - 1]);
   }
-
-  // when the "start again" button is clicked after 6 numbers have been generated 
+  
+  /**
+   * Handles the click event for the "start again" button after 6 numbers have been generated
+   * @function
+   *  1. clear display box
+   *  2. clear previous random number results 
+   *  3. enable the "generate" button again and hide the "start again" button
+   * @returns {void}
+   */
   const handleReset = () => {
-    // clear display box
     setDisplay('');
-    // clear previous random number results 
     setNumbers([]);
-    // enable the "generate" button again and hide the "start again" button
     setIsDisabled(false);
     setIsResetShown(false);
   }
@@ -63,8 +97,8 @@ function App() {
       <h1 id="title">Mark Six Lottery Numbers Generator</h1>
       <div id="display" className="display" style={{animation: animation ? 'mymove 2s' : 'none'}}>{display}</div>
       <div className="btn">
-        <button id="button" onClick={handleClick} disabled={isDisabled}>GENERATE</button>
-        <button id="reset" onClick={handleReset} style={{ display: isResetShown ? 'inline-block' : 'none' }}>START AGAIN</button>
+        <button id="button" onClick={handleClick} disabled={isDisabled}>generate</button>
+        <button id="reset" onClick={handleReset} style={{ display: isResetShown ? 'inline-block' : 'none' }}>start again</button>
       </div>
       <div className="numberContainer">
         {numbers.map((num, index) => (
