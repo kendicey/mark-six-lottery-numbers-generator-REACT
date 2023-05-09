@@ -7,6 +7,11 @@ This programme helps players to generate 6 unique numbers for the game.
 
 HTML, CSS, JavaScript, React.js
 
+# What next?
+<li>Add sound effects on box rotation</li>
+<li>Implement a database to store the generated numbers</li>
+<li>Implement a feature to allow users to save their favourite numbers</li>
+                    
 # Getting Started
 
 1. Fork this project.
