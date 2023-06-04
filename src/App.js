@@ -23,12 +23,13 @@ function App() {
    * Generates a new number if there is a repeated number in the array
    * @function
    * @param {number} num - The number to check for repeats in the array
-   * @returns {void}
+   * @returns {number} A new number if there is a repeated number in the array, otherwise returns the original number
    */
   const checkNumber = (num) => {
     while(numbers.indexOf(num) !== -1){
       num = generateNumber();
     }
+    return num;
   }
 
   /**
@@ -44,12 +45,12 @@ function App() {
   const generateUniqueNumber = () => {
     if (numbers.length < LAST_NUM_INDEX){
       let num = generateNumber();
-      checkNumber(num);
+      num = checkNumber(num);
       numbers.push(num);
       setNumbers(numbers);
     } else if (numbers.length === LAST_NUM_INDEX) {
         let num = generateNumber();
-        checkNumber(num);
+        num = checkNumber(num);
         numbers.push(num);
         setNumbers(numbers);
         setIsDisabled(true);
