@@ -140,3 +140,33 @@
 	background-image: linear-gradient(#F7CB6D, #ff5e00);
 	box-shadow: 0 0 10px 3px #99404c;
 }
+
+/* make responsive layout on mobile devices */
+@media only screen and (max-width: 800px){
+
+  /* formatting and styling for <h1> page title*/
+  #title{
+    font-size: xx-large;
+    width: 70%;
+  }
+
+  /* formatting and styling for large number display box*/
+  #display {
+    width: 150px;
+    height: 150px;
+    line-height: 150px;
+    font-size: 3em;
+  }
+
+  /* formatting and styling for number display*/
+  .numbers{
+    width: 90px;
+    height: 90px;
+    line-height: 90px;
+  }
+
+  /* formatting and styling for numberContainer */
+  .numberContainer{
+    margin-bottom: 2rem;
+  }
+}
