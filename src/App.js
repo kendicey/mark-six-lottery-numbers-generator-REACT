@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './App.css';
 
 const LAST_NUM_INDEX = 5;
-const POSSIBLE_NUM_TOTAL = 5;
+const POSSIBLE_NUM_TOTAL = 49;
 
 function App() {
   // set states and initialize them
